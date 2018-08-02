@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "ddphotbooth",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,5 +9,18 @@
     "express": "3.2.6",
     "jade": "*",
     "multer": "^1.3.1"
-  }
+  },
+  "description": "A Web based photo booth application for taking photos and then applying effects to them.  Made for Griffith University ICT open day 2018.",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanityLacking/DD-photobooth.git"
+  },
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SanityLacking/DD-photobooth/issues"
+  },
+  "homepage": "https://github.com/SanityLacking/DD-photobooth#readme"
 }
