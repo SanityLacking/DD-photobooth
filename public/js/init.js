@@ -63,7 +63,7 @@ function photoUpload(dataURL){
 	var fd = new FormData((document.forms[0]));
 	fd.append("image",blob);
 	var request = new XMLHttpRequest();
-    request.open("POST", "https://deepdreamphotobooth-sanityl.c9users.io/uploadphoto");
+    request.open("POST", "uploadphoto");
     request.send(fd);
 }
 
