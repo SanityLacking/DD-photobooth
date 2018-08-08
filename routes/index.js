@@ -2,7 +2,7 @@
 /*
  * GET home page.
  */
-
+var pythonTF = require("../pythonTf.js");
 
 exports.index = function(req, res){
   res.render('index', { title: 'Express' });

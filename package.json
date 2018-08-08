@@ -1,6 +1,6 @@
 {
-  "name": "ddphotbooth",
-  "version": "0.0.1",
+  "name": "mlphotobooth",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -24,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/SanityLacking/DD-photobooth/issues"
   },
-  "homepage": "https://github.com/SanityLacking/DD-photobooth#readme"
+  "homepage": "https://github.com/SanityLacking/DD-photobooth#readme",
+  "keywords": [
+    "ML",
+    "Node",
+    "Express",
+    "styletransfere"
+  ]
 }
