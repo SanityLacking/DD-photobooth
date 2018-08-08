@@ -7,7 +7,9 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+ , fs = require('fs')
+  , https = require('https');
 
 var multer  = require('multer')
 var storage = multer.diskStorage({
@@ -18,6 +20,18 @@ var storage = multer.diskStorage({
         callback(null, Date.now() + '.jpg'); // set the file name and extension
     }
 });
+
+
+var key = fs.readFileSync('private.key');
+var cert = fs.readFileSync( 'primary.crt' );
+var ca = fs.readFileSync( 'intermediate.crt' );
+var options = {
+key: key,
+cert: cert,
+ca: ca
+};
+
+var createServer = require('auto-sni');
 
 var upload = multer({ storage:storage })
 
@@ -54,6 +68,19 @@ app.post('/uploadphoto',upload.single('image'), routes.uploadphoto);
 //app.post('/upload', routes.upload);
 app.get('/display', routes.display);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get(3001), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+https.createServer(options, app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+/*
+createServer({
+	version: "v02",
+	email: "cailen.robertson@griffithuni.edu.au",
+	domains: ["35.189.60.24"],
+	ports: { http: 80, https:443 },
+	agreeTos: true}, 
+	app);
+*/
