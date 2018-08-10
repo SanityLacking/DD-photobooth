@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CameraPageComponent } from './camera-page/camera-page.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
@@ -23,6 +23,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
