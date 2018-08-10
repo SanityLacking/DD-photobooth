@@ -53,4 +53,21 @@ export class CameraPageComponent implements OnInit {
 
     return image;
   }
+
+  shotEffect(): void {
+    const captureFX: HTMLElement = document.querySelector('.capture-effect');
+    captureFX.classList.remove('capture-clear');
+    // Hide (and subsequently re-show) the element to force a DOM redraw between
+    // removing and re-adding the capture-clear class
+    captureFX.style.display = 'inline';
+
+    setTimeout(function() {
+      captureFX.classList.add('capture-clear');
+      captureFX.style.display = 'block';
+    }, 10);
+  }
+
+  takePhoto(): void {
+    this.shotEffect();
+  }
 }

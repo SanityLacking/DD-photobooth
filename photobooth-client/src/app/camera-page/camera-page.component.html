@@ -1,3 +1,5 @@
+<div class="capture-effect capture-clear"></div>
+
 <mat-toolbar color="primary">
   <span>Effects Camera</span>
 </mat-toolbar>
@@ -6,6 +8,6 @@
   <video autoplay="true" id="webcam"></video>
 </div>
 
-<button mat-fab id="capture-button">
+<button mat-fab id="capture-button" (click)="takePhoto()">
   <mat-icon aria-label="Capture image">camera_alt</mat-icon>
 </button>
