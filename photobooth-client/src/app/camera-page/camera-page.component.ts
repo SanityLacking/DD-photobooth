@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camera-page',
@@ -17,7 +18,8 @@ export class CameraPageComponent implements OnInit {
   // Set to true if the user accepts the webcam permission request
   camConnected = false;
 
-  constructor() {
+
+  constructor(private router: Router) {
     this.captureCanvas = document.createElement('canvas');
     this.captureCanvas.width = CameraPageComponent.IMG_WIDTH;
     this.captureCanvas.height = CameraPageComponent.IMG_HEIGHT;
@@ -25,9 +27,11 @@ export class CameraPageComponent implements OnInit {
     this.context = this.captureCanvas.getContext('2d');
   }
 
+
   ngOnInit() {
     this.startWebcam();
   }
+
 
   private startWebcam(): void {
     const video: HTMLVideoElement = document.querySelector('#webcam');
@@ -44,7 +48,8 @@ export class CameraPageComponent implements OnInit {
     }
   }
 
-  captureWebcam(): HTMLImageElement {
+
+  private captureWebcam(): HTMLImageElement {
     const video: HTMLVideoElement = document.querySelector('#webcam');
     const image: HTMLImageElement = new Image;
 
@@ -54,11 +59,12 @@ export class CameraPageComponent implements OnInit {
     return image;
   }
 
-  shotEffect(): void {
+
+  private shotEffect(): void {
     const captureFX: HTMLElement = document.querySelector('.capture-effect');
     captureFX.classList.remove('capture-clear');
-    // Hide (and subsequently re-show) the element to force a DOM redraw between
-    // removing and re-adding the capture-clear class
+    // Alter the display mode (the value of this makes no difference) in order
+    // to force a redraw, allowing the opacity transition to work.
     captureFX.style.display = 'inline';
 
     setTimeout(function() {
@@ -67,7 +73,11 @@ export class CameraPageComponent implements OnInit {
     }, 10);
   }
 
+
   takePhoto(): void {
     this.shotEffect();
+
+    const img: HTMLImageElement = this.captureWebcam();
+    this.router.navigateByUrl('/confirm-shot', { queryParams: { image: img } });
   }
 }
