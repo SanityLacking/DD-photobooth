@@ -6,12 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./camera-page.component.scss']
 })
 export class CameraPageComponent implements OnInit {
+  // Dimensions of images uploaded to server
   static IMG_WIDTH = 640;
   static IMG_HEIGHT = 480;
 
+  // Canvas and context used for webcam stream frame capture
   captureCanvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
 
+  // Set to true if the user accepts the webcam permission request
   camConnected = false;
 
   constructor() {
@@ -27,7 +30,7 @@ export class CameraPageComponent implements OnInit {
   }
 
   private startWebcam(): void {
-    let video: HTMLVideoElement = document.querySelector('#webcam');
+    const video: HTMLVideoElement = document.querySelector('#webcam');
 
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({video: true})

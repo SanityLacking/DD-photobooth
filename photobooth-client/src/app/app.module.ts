@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CameraPageComponent } from './camera-page/camera-page.component';
-import { MatToolbarModule, MatCardModule, MatSidenavModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
@@ -25,7 +25,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
   bootstrap: [AppComponent]
 })
