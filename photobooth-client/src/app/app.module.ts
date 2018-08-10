@@ -20,12 +20,14 @@ const appRoutes: Routes = [
     CameraPageComponent
   ],
   imports: [
+    BrowserModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
   ],
   providers: [],
-  // bootstrap: [CameraPageComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
