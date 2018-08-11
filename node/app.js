@@ -66,12 +66,14 @@ app.post('/api/uploadImage', function(req, res){
 });
 
 http.createServer(app).listen(app.get(3001), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('HTTP server listening on port ' + app.get('port'));
 });
 
+/*
 https.createServer(options, app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('HTTPS server listening on port ' + app.get('port'));
 });
+//*/
 /*
 createServer({
 	version: "v02",
