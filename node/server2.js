@@ -101,8 +101,9 @@ app.post('/uploadphoto', function(req, res){
 });
 
 // HTTP listener
-app.listen(3000, function () {
-    console.log('Server is running on port 3000');
+app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
+    var addr = server.address();
+    console.log("Node server listening at", addr.address + ":" + addr.port);
 });
 module.exports = app;
 
