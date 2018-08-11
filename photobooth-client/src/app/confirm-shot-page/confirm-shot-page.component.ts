@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+//import { url } from 'inspector';
 
 @Component({
   selector: 'app-confirm-shot-page',
@@ -28,13 +29,13 @@ export class ConfirmShotPageComponent implements OnInit {
 
   discardImage() {
     this.location.back();
-
     // Clear session storage
     sessionStorage.clear();
   }
 
-
+  // Send the image to the Node server
   confirmShot() {
     this.router.navigate(['filter']);
   }
+
 }
