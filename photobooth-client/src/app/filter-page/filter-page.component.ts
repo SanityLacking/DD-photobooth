@@ -16,4 +16,5 @@ export class FilterPageComponent implements OnInit {
   ngOnInit() {
     this.image = this.route.snapshot.queryParams['image'];
   }
+
 }

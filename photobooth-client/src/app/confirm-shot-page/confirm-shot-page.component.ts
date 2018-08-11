@@ -25,7 +25,7 @@ export class ConfirmShotPageComponent implements OnInit {
   }
 
 
-  continueWithImage() {
+  confirmShot(){
     this.router.navigate(['filter'], { queryParams: { image: this.image } });
   }
 }
