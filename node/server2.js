@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname,'../photobooth-client/dist/photobooth-client/index.html'))
 });
 
-app.post('/uploadphoto', function(req, res){
+app.post('/api/uploadphoto', function(req, res){
     //console.log('uploadphoto');
     let image = req.body.image;
     let photo_obj = {
