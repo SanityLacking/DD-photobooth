@@ -27,6 +27,10 @@ export class ResultPageComponent implements OnInit {
 
 
   ngOnInit() {
+    // We don't know what the link to the resultant image is until we've
+    // uploaded it....
+    this.resultLink = undefined;
+
     this.prepareCanvas();
     this.addWatermark();
 
@@ -61,5 +65,10 @@ export class ResultPageComponent implements OnInit {
     this.context.fillStyle = 'rgba(255, 255, 255, 0.6)';
     this.context.textAlign = 'right';
     this.context.fillText('#GriffithOpenDay', this.width - 32, this.height - 32);
+  }
+
+  startOver() {
+    this.router.navigate(['camera']);
+    sessionStorage.clear();
   }
 }
