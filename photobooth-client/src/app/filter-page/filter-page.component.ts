@@ -30,17 +30,11 @@ export class FilterPageComponent implements OnInit {
 
   //Navigate to result page
   confirmFilter() {
-    this.router.navigate(['result'], { queryParams: { image: this.image } });
+    this.router.navigate(['result']);
   }
 
   //Begin process again by redirecting to camera page
   startOver(){
     this.router.navigate(['camera']);
   }
-
-  discardImage() {
-    this.location.back();
-    //this.router.navigate(['result']);
-  }
-
 }
