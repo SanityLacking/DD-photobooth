@@ -28,18 +28,18 @@ pythonTf.processImg = function(inputA,checkpointS,callback){
 		checkpoint = "wave.ckpt"; //for now this will be the default.
 	}
 	var scriptPath = './python_code/';
-	var checkpointPath ="examples/checkpoint/";
-	var inputPath ="";
-	var outputPath ="";
+	var checkpointPath ="checkpoints/";
+	var inputPath ="../public/uploads/";
+	var outputPath ="../public/images/";
+
 	var options = {
-	mode: 'text',
-	
-	pythonOptions: ['-u'], // get print results in real-time
-	scriptPath: scriptPath,
-	args: ['--checkpoint', scriptPath+checkpointPath+checkpoint,
-			'--in-path',scriptPath+inputPath+inputArg,
-			'--out-path',scriptPath+outputPath+outputArg
-			]
+		mode: 'text',
+		pythonOptions: ['-u'], // get print results in real-time
+		scriptPath: scriptPath,
+		args: ['--checkpoint', scriptPath+checkpointPath+checkpoint,
+				'--in-path',scriptPath+inputPath+inputArg,
+				'--out-path',scriptPath+outputPath+outputArg
+				]
 	};
 	PythonShell.run('evaluate.py', options, function (err, results) {
 	if (err) throw err;

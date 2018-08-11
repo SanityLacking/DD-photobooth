@@ -49,7 +49,9 @@ app.post('/uploadphoto', function(req, res){
     // Save base64 image to disk
     let fileName = imageUploader.upload(image);
     console.log(fileName);
-    python.processImg(fileName);
+    python.processImg(fileName,1,function(){
+        console.log('done');
+    });
 });
 
 // HTTP listener
