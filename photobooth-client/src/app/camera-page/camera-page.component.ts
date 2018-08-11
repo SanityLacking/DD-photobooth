@@ -63,7 +63,7 @@ export class CameraPageComponent implements OnInit {
   }
 
 
-  private shotEffect(): void {
+  private shotEffect(callback: () => void): void {
     const captureFX: HTMLElement = document.querySelector('.capture-effect');
     captureFX.classList.remove('capture-clear');
     // Alter the display mode (the value of this makes no difference) in order
@@ -73,15 +73,17 @@ export class CameraPageComponent implements OnInit {
     setTimeout(function() {
       captureFX.classList.add('capture-clear');
       captureFX.style.display = 'block';
+
+      setTimeout(callback, 1000);
     }, 10);
   }
 
 
   takePhoto(): void {
-    this.shotEffect();
-
-    const img: HTMLImageElement = this.captureWebcam();
-    this.router.navigateByUrl('/confirm-shot', { queryParams: { image: img } });
+    this.shotEffect(() => {
+      const img: HTMLImageElement = this.captureWebcam();
+      this.router.navigate(['confirm-shot'], { queryParams: { image: img.src } });
+    });
   }
 
 }

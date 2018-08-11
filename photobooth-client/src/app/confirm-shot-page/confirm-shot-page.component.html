@@ -1,0 +1,16 @@
+<mat-toolbar color="accent">
+  <span>Confirm Photo</span>
+  <span class="toolbar-spacer"></span>
+
+  <button mat-icon-button (click)="discardImage()">
+    <mat-icon aria-label="Discard image">close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div id="photo-confirm-container">
+  <img [src]="image">
+</div>
+
+<button mat-fab id="confirm-button">
+  <mat-icon aria-label="Continue with image">check</mat-icon>
+</button>
