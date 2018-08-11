@@ -21,3 +21,11 @@
     color: #0277BD;
   }
 }
+
+#start-over-button {
+  position: fixed;
+  transform: scale(1.5);
+  right: 75px;
+  bottom: 75px;
+  z-index: 100;
+}

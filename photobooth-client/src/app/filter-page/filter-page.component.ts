@@ -28,13 +28,14 @@ export class FilterPageComponent implements OnInit {
     this.height = Number(sessionStorage.getItem('height'));
   }
 
-  //Navigate to result page
+  // Navigate to result page
   confirmFilter() {
     this.router.navigate(['result']);
   }
 
-  //Begin process again by redirecting to camera page
-  startOver(){
+  // Begin process again by redirecting to camera page
+  startOver() {
     this.router.navigate(['camera']);
+    sessionStorage.clear();
   }
 }
