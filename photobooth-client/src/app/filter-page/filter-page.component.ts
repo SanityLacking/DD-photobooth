@@ -21,10 +21,13 @@ export class FilterPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.image = this.route.snapshot.queryParams['image'];
-
-    this.width = this.route.snapshot.queryParams['width'];
-    this.height = this.route.snapshot.queryParams['height'];
+    //this.image = this.route.snapshot.queryParams['image'];
+    
+    this.image = sessionStorage.getItem('imageStorage');
+    this.width = Number(sessionStorage.getItem('width'));
+    this.height = Number(sessionStorage.getItem('height'));
+    //this.width = this.route.snapshot.queryParams['width'];
+    //this.height = this.route.snapshot.queryParams['height'];
   }
 
   discardImage() {

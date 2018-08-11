@@ -64,6 +64,8 @@ export class CameraPageComponent implements OnInit {
     // Save to session
     try {
       sessionStorage.setItem('imageStorage', image.src);
+      sessionStorage.setItem('width', String(CameraPageComponent.IMG_WIDTH));
+      sessionStorage.setItem('height', String(CameraPageComponent.IMG_HEIGHT));
       console.log('Storage successful');
     } catch (e) {
       console.log('Storage failed: ' + e);
