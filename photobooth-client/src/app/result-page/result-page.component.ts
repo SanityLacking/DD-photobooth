@@ -8,6 +8,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./result-page.component.scss']
 })
 export class ResultPageComponent implements OnInit {
+  // URL pointing to the final image hosted on the server. This should be
+  // produced after performing post-processing operations below.
+  resultLink: string | undefined = undefined;
+
   // Dimensions of the captured image, for creating a canvas for post-processing
   width: number;
   height: number;
@@ -16,14 +20,17 @@ export class ResultPageComponent implements OnInit {
   ppCanvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
 
+  // b64 encoded result after we finish post-processing
+  image: string;
+
   constructor(private router: Router, private location: Location) {}
+
 
   ngOnInit() {
     this.prepareCanvas();
     this.addWatermark();
 
-    // DEBUG
-    document.querySelector('#test').appendChild(this.ppCanvas);
+    this.image = this.ppCanvas.toDataURL('image/png');
   }
 
 

@@ -8,8 +8,11 @@ import { CameraPageComponent } from './camera-page/camera-page.component';
 import { FilterPageComponent } from './filter-page/filter-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { ConfirmShotPageComponent } from './confirm-shot-page/confirm-shot-page.component';
+
 import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
+
+import { QRCodeModule } from 'angular2-qrcode';
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
@@ -41,7 +44,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    QRCodeModule
   ],
   bootstrap: [AppComponent]
 })
