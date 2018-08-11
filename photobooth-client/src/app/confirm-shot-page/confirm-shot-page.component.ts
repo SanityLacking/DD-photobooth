@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ImageService } from '../image.service';
+
 //import { url } from 'inspector';
 
 @Component({
@@ -16,8 +18,10 @@ export class ConfirmShotPageComponent implements OnInit {
   width: number;
   height: number;
 
-  constructor(private router: Router, private route: ActivatedRoute,
-              private location: Location) {}
+  constructor(private router: Router, 
+              private route: ActivatedRoute,
+              private location: Location,
+              private _imageService: ImageService) {}
 
 
   ngOnInit() {
@@ -33,9 +37,23 @@ export class ConfirmShotPageComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  // Send the image to the Node server
+  // Send the image to the Node server..?
   confirmShot() {
-    this.router.navigate(['filter']);
+    //this.router.navigate(['filter']);
+    this.uploadImage(this.image);
+  }
+
+  uploadImage(image){
+    this._imageService.uploadImage(image).subscribe(
+      data => {
+        this.router.navigate(['filter']);
+        return true;
+      },
+      error => {
+        console.error('Error uploading image');
+      }
+
+    );
   }
 
 }

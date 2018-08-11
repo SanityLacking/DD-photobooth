@@ -27,7 +27,8 @@ exports.display = function(req, res){
 exports.uploadphoto = function(req, res){
   console.log("uploadPhoto");
   console.log(req.file);
-  res.render('displayPhoto', { title: 'Express' });
+  //res.render('displayPhoto', { title: 'Express' });
+  res.json(req.file);
   //res.end();
 };
 

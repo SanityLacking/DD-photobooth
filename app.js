@@ -69,6 +69,10 @@ app.post('/uploadphoto',upload.single('image'), routes.uploadphoto);
 //app.post('/upload', routes.upload);
 app.get('/display', routes.display);
 
+app.get('/api/uploadImage', function(req, res){
+  console.log('upload image');
+});
+
 http.createServer(app).listen(app.get(3001), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

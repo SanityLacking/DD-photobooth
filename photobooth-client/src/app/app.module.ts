@@ -10,6 +10,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
 import { ConfirmShotPageComponent } from './confirm-shot-page/confirm-shot-page.component';
 import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http'; 
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     ConfirmShotPageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,

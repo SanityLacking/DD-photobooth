@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import {Observable, of} from 'rxjs';
 
 // Define some HTTP headers for when we send the data to the Node API
@@ -15,9 +16,13 @@ export class ImageService {
 
   constructor(private http:HttpClient) { }
 
+  testFunction(test){
+    let body = JSON.stringify(test);
+    return this.http.post('http://localhost:3000/api/uploadphoto', body, httpOptions);
+  }
 
   uploadImage(image){
     let body = JSON.stringify(image);
-    return this.http.post('http://localhost:3000/uploadphoto', body, httpOptions);
+    return this.http.post('http://localhost:3000/api/uploadphoto', body, httpOptions);
   }
 }
