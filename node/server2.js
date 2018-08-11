@@ -38,7 +38,7 @@ const storage = multer.diskStorage({
   });
 
 
-app.use(express.static(__dirname + '../photobooth-client/dist/photobooth-client'));
+app.use(express.static(path.join(__dirname, '../photobooth-client/dist/photobooth-client')));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname,'../photobooth-client/dist/photobooth-client/index.html'))
 });
