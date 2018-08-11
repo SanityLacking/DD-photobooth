@@ -22,4 +22,9 @@ export class ConfirmShotPageComponent implements OnInit {
   discardImage() {
     this.location.back();
   }
+
+  confirmShot(){
+    this.router.navigate(['filter'], { queryParams: { image: this.image } });
+  }
+
 }
