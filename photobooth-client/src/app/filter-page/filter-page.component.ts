@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-filter-page',
@@ -26,10 +28,19 @@ export class FilterPageComponent implements OnInit {
     this.height = Number(sessionStorage.getItem('height'));
   }
 
+  //Navigate to result page
+  confirmFilter() {
+    this.router.navigate(['result'], { queryParams: { image: this.image } });
+  }
+
+  //Begin process again by redirecting to camera page
+  startOver(){
+    this.router.navigate(['camera']);
+  }
 
   discardImage() {
-    // this.location.back();
-    this.router.navigate(['result']);
+    this.location.back();
+    //this.router.navigate(['result']);
   }
 
 }

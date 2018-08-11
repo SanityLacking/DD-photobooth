@@ -9,3 +9,29 @@
 <div id="photo-filter-container">
   <img [src]="image">
 </div>
+
+
+<div id="filter-list">
+  <div>
+    <mat-card class="filter-card"><img mat-card-image class="filter-img" [src]="image"></mat-card>
+  </div>
+  <div>
+    <mat-card class="filter-card"><img mat-card-image class="filter-img" [src]="image"></mat-card>
+  </div>
+  <div>
+    <mat-card class="filter-card"><img mat-card-image class="filter-img" [src]="image"></mat-card>
+  </div>
+  <div>
+    <mat-card class="filter-card"><img mat-card-image class="filter-img" [src]="image"></mat-card>
+  </div>
+
+</div>
+
+<button mat-fab class="affirmative-bg" id="confirm-button"
+        (click)="confirmFilter()">
+  <mat-icon aria-label="Confirm selected filter">check</mat-icon>
+</button>
+
+<button mat-fab class="negative-bg" id="start-over-button" (click)="startOver()">
+  <mat-icon aria-label="Take new photo">replay</mat-icon>
+</button>

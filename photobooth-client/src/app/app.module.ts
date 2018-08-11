@@ -11,6 +11,8 @@ import { ConfirmShotPageComponent } from './confirm-shot-page/confirm-shot-page.
 
 import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
 
 import { QRCodeModule } from 'angular2-qrcode';
 
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     ConfirmShotPageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatListModule,
     QRCodeModule
   ],
   bootstrap: [AppComponent]
