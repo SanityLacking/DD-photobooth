@@ -29,6 +29,8 @@ pythonTf.processImg = function(inputA,checkpointS,callback){
 	}
 	var scriptPath = './python_code/';
 	var checkpointPath ="checkpoints/";
+
+	// I've made some changes here, please check these -- Ryoma
 	var inputPath ="../public/uploads/";
 	var outputPath ="../public/images/";
 

@@ -2,10 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
-const python = require("./pythonTf"); 
 const app = express();
 const imageUploader = require('./imageUploader');
 
+// Tensorflow options
+const python = require("./pythonTf"); 
+const TFServer = require('./TFServer');
 
 app.use(express.static(__dirname));
  
@@ -49,9 +51,20 @@ app.post('/uploadphoto', function(req, res){
     // Save base64 image to disk
     let fileName = imageUploader.upload(image);
     console.log(fileName);
+
+    /*
+    So I just realised that we don't need to run the TF code here as we're supposed to be
+    sending an image to the Cloud server. I've decided to try something else out...
     python.processImg(fileName,1,function(){
         console.log('done');
     });
+    */
+   TFServer.post('/public/uploads/' + fileName);
+
+
+});
+app.post('/api/tf', function(req, res){
+    console.log("TF request");
 });
 
 // HTTP listener
