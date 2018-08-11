@@ -23,13 +23,12 @@ export class FilterPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.image = this.route.snapshot.queryParams['image'];
-
-    this.width = this.route.snapshot.queryParams['width'];
-    this.height = this.route.snapshot.queryParams['height'];
+    this.image = sessionStorage.getItem('imageStorage');
+    this.width = Number(sessionStorage.getItem('width'));
+    this.height = Number(sessionStorage.getItem('height'));
   }
 
-  //Forward filtered image to user
+  //Navigate to result page
   confirmFilter() {
     this.router.navigate(['result'], { queryParams: { image: this.image } });
   }
@@ -41,6 +40,7 @@ export class FilterPageComponent implements OnInit {
 
   discardImage() {
     this.location.back();
+    //this.router.navigate(['result']);
   }
 
 }
