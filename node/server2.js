@@ -31,19 +31,19 @@ var photos = [];
 var filter_options = [
     {
         name: 'la muse',
-        src = 'la_muse.JPG',
+        src: 'la_muse.JPG',
     }, {
         name: 'rain princess',
-        src = 'rain_princess.jpg',
+        src: 'rain_princess.jpg',
     },{
         name: 'udnie',
-        src = 'udnie.jpg',
+        src: 'udnie.jpg',
     }, {
         name: 'wave',
-        src = 'wave.jpg',
+        src: 'wave.jpg',
     }, {
         name: 'wreck',
-        src = null,
+        src: null,
     }, 
 ];
 
