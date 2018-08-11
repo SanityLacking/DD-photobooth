@@ -26,7 +26,26 @@ var corsOptions = {
 }
 app.use(cors(corsOptions))
 
-
+// App Data
+var photos = [];
+var filter_options = [
+    {
+        name: 'la muse',
+        src = 'la_muse.JPG',
+    }, {
+        name: 'rain princess',
+        src = 'rain_princess.jpg',
+    },{
+        name: 'udnie',
+        src = 'udnie.jpg',
+    }, {
+        name: 'wave',
+        src = 'wave.jpg',
+    }, {
+        name: 'wreck',
+        src = null,
+    }, 
+];
 
 // Routes
 app.use(express.static(path.join(__dirname, '../photobooth-client/dist/photobooth-client')));
@@ -37,6 +56,10 @@ app.get('/', function (req, res) {
 app.post('/uploadphoto', function(req, res){
     //console.log('uploadphoto');
     let image = req.body.image;
+    let photo_obj = {
+        original: null,
+        filter: null
+    };
     //image = image.src
     //console.log(image);
 
