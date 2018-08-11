@@ -41,7 +41,7 @@ app.post('/uploadphoto', function(req, res){
     console.log('uploadphoto');
     let image = req.body.image;
     //image = image.src
-    console.log(image);
+    //console.log(image);
 
     // Save base64 image to disk
     try{
