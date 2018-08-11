@@ -20,20 +20,21 @@ export class ConfirmShotPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.image = this.route.snapshot.queryParams['image'];
-
-    // ugh
-    this.width = this.route.snapshot.queryParams['width'];
-    this.height = this.route.snapshot.queryParams['height'];
+    if (typeof(Storage) !== 'undefined') {
+      this.image = sessionStorage.getItem('imageStorage');
+    }
   }
 
 
   discardImage() {
     this.location.back();
+
+    // Clear session storage
+    sessionStorage.clear();
   }
 
 
-  confirmShot(){
+  confirmShot() {
     this.router.navigate(['filter'], { queryParams: { image: this.image } });
   }
 }

@@ -61,6 +61,13 @@ export class CameraPageComponent implements OnInit {
                            CameraPageComponent.IMG_HEIGHT);
     image.src = this.captureCanvas.toDataURL('image/png');
 
+    // Save to session
+    try {
+      sessionStorage.setItem('imageStorage', image.src);
+      console.log('Storage successful');
+    } catch (e) {
+      console.log('Storage failed: ' + e);
+    }
     return image;
   }
 
@@ -80,17 +87,11 @@ export class CameraPageComponent implements OnInit {
     }, 10);
   }
 
-
   takePhoto(): void {
     this.shotEffect(() => {
       const img: HTMLImageElement = this.captureWebcam();
 
-      this.router.navigate(['confirm-shot'],
-                           { queryParams:
-                             { image: img.src,
-                               width: CameraPageComponent.IMG_WIDTH,
-                               height: CameraPageComponent.IMG_HEIGHT } });
+      this.router.navigate(['confirm-shot']);
     });
   }
-
 }
