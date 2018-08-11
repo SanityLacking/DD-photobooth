@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CameraPageComponent } from './camera-page/camera-page.component';
 import { FilterPageComponent } from './filter-page/filter-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { ConfirmShotPageComponent } from './confirm-shot-page/confirm-shot-page.component';
 import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
   { path: 'filter', component: FilterPageComponent },
   { path: 'result', component: ResultPageComponent },
+  { path: 'confirm-shot', component: ConfirmShotPageComponent },
   { path: '',
     redirectTo: '/camera',
     pathMatch: 'full' }
@@ -25,7 +27,7 @@ const appRoutes: Routes = [
     CameraPageComponent,
     FilterPageComponent,
     ResultPageComponent,
-
+    ConfirmShotPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +38,11 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
