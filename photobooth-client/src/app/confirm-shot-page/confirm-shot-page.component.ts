@@ -39,21 +39,8 @@ export class ConfirmShotPageComponent implements OnInit {
 
   // Send the image to the Node server..?
   confirmShot() {
-    //this.router.navigate(['filter']);
-    this.uploadImage(this.image);
-  }
-
-  uploadImage(image){
-    this._imageService.uploadImage(image).subscribe(
-      data => {
-        this.router.navigate(['filter']);
-        return true;
-      },
-      error => {
-        console.error('Error uploading image');
-      }
-
-    );
+    this.router.navigate(['filter']);
+    //this.uploadImage(this.image);
   }
 
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-filter-page',
@@ -18,8 +19,13 @@ export class FilterPageComponent implements OnInit {
   width: number;
   height: number;
 
-  constructor(private router: Router, private route: ActivatedRoute,
-              private location: Location) {}
+  // Filter id
+  filter: number;
+
+  constructor(private router: Router, 
+              private route: ActivatedRoute,
+              private location: Location,
+              private _imageService: ImageService) {}
 
 
   ngOnInit() {
@@ -30,6 +36,7 @@ export class FilterPageComponent implements OnInit {
 
   // Navigate to result page
   confirmFilter() {
+    this.uploadImage(this.image, this.filter);
     this.router.navigate(['result']);
   }
 
@@ -37,5 +44,22 @@ export class FilterPageComponent implements OnInit {
   startOver() {
     this.router.navigate(['camera']);
     sessionStorage.clear();
+  }
+
+  
+  uploadImage(image, filter){
+    this._imageService.uploadImage(image, filter).subscribe(
+      data => {
+        //this.router.navigate(['filter']);
+        return true;
+      },
+      error => {
+        console.error('Error uploading image');
+      }
+
+    );
+  }
+  onFilterCardClick(filter){
+    console.log(filter);
   }
 }

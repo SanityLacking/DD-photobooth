@@ -16,9 +16,10 @@ export class ImageService {
 
   constructor(private http:HttpClient) { }
 
-  uploadImage(image){
+  uploadImage(image, filter){
     let data = {
-      'image': image
+      'image': image,
+      'filter': filter
     }
     let body = JSON.stringify(data);
     return this.http.post('http://localhost:3000/uploadphoto', body, httpOptions);
