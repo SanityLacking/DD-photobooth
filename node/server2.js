@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
-//const python = require("./pythonTf"); 
+const python = require("./pythonTf"); 
 const app = express();
 const imageUploader = require('./imageUploader');
 
@@ -49,7 +49,7 @@ app.post('/uploadphoto', function(req, res){
     // Save base64 image to disk
     let fileName = imageUploader.upload(image);
     console.log(fileName);
-    
+    python.processImg(fileName);
 });
 
 // HTTP listener
