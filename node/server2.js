@@ -28,7 +28,8 @@ app.get('/', function (req, res) {
 
 app.post('/uploadphoto', function(req, res){
     console.log('uploadphoto');
-    console.log(req.body.image)
+    image = req.body.image;
+    //console.log(req.body.image)
     res.send(true);
 });
 
