@@ -11,12 +11,20 @@ export class ConfirmShotPageComponent implements OnInit {
   // base64 encoded png image representing the webcam image captured
   image: string;
 
+  // Captured image width and height (only stored to forward to the filter page)
+  width: number;
+  height: number;
+
   constructor(private router: Router, private route: ActivatedRoute,
               private location: Location) {}
 
 
   ngOnInit() {
     this.image = this.route.snapshot.queryParams['image'];
+
+    // ugh
+    this.width = this.route.snapshot.queryParams['width'];
+    this.height = this.route.snapshot.queryParams['height'];
   }
 
 

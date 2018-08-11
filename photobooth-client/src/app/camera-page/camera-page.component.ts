@@ -56,7 +56,9 @@ export class CameraPageComponent implements OnInit {
     const video: HTMLVideoElement = document.querySelector('#webcam');
     const image: HTMLImageElement = new Image;
 
-    this.context.drawImage(video, 0, 0, 640, 480);
+    this.context.drawImage(video, 0, 0,
+                           CameraPageComponent.IMG_WIDTH,
+                           CameraPageComponent.IMG_HEIGHT);
     image.src = this.captureCanvas.toDataURL('image/png');
 
     return image;
@@ -82,7 +84,12 @@ export class CameraPageComponent implements OnInit {
   takePhoto(): void {
     this.shotEffect(() => {
       const img: HTMLImageElement = this.captureWebcam();
-      this.router.navigate(['confirm-shot'], { queryParams: { image: img.src } });
+
+      this.router.navigate(['confirm-shot'],
+                           { queryParams:
+                             { image: img.src,
+                               width: CameraPageComponent.IMG_WIDTH,
+                               height: CameraPageComponent.IMG_HEIGHT } });
     });
   }
 
