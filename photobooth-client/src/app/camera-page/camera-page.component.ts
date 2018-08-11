@@ -1,3 +1,5 @@
+import { MatButtonModule } from '@angular/material/button';
+// import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,6 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './camera-page.component.html',
   styleUrls: ['./camera-page.component.scss']
 })
+
+
 export class CameraPageComponent implements OnInit {
   // Dimensions of images uploaded to server
   static IMG_WIDTH = 640;
@@ -26,7 +30,6 @@ export class CameraPageComponent implements OnInit {
 
     this.context = this.captureCanvas.getContext('2d');
   }
-
 
   ngOnInit() {
     this.startWebcam();
@@ -60,7 +63,7 @@ export class CameraPageComponent implements OnInit {
   }
 
 
-  private shotEffect(): void {
+  private shotEffect(callback: () => void): void {
     const captureFX: HTMLElement = document.querySelector('.capture-effect');
     captureFX.classList.remove('capture-clear');
     // Alter the display mode (the value of this makes no difference) in order
@@ -70,14 +73,17 @@ export class CameraPageComponent implements OnInit {
     setTimeout(function() {
       captureFX.classList.add('capture-clear');
       captureFX.style.display = 'block';
+
+      setTimeout(callback, 1000);
     }, 10);
   }
 
 
   takePhoto(): void {
-    this.shotEffect();
-
-    const img: HTMLImageElement = this.captureWebcam();
-    this.router.navigateByUrl('/confirm-shot', { queryParams: { image: img } });
+    this.shotEffect(() => {
+      const img: HTMLImageElement = this.captureWebcam();
+      this.router.navigate(['confirm-shot'], { queryParams: { image: img.src } });
+    });
   }
+
 }
