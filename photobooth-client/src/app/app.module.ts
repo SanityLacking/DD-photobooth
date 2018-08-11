@@ -11,6 +11,7 @@ import { ConfirmShotPageComponent } from './confirm-shot-page/confirm-shot-page.
 import { MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatCardModule, MatSidenavModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http'; 
+import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
   { path: 'camera', component: CameraPageComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
   bootstrap: [AppComponent]
 })
