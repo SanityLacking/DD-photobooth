@@ -1,26 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-confirm-shot-page',
   templateUrl: './confirm-shot-page.component.html',
   styleUrls: ['./confirm-shot-page.component.scss']
 })
-export class ConfirmShotPageComponent implements OnInit, OnDestroy {
-  image: HTMLImageElement;
+export class ConfirmShotPageComponent implements OnInit {
+  // base64 encoded png image representing the webcam image captured
+  image: string;
 
-  private routeSub: any;
-
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute,
+              private location: Location) {}
 
 
   ngOnInit() {
-    this.routeSub = this.route.params.subscribe(params => {
-      this.image = params['image'];
-    });
+    this.image = this.route.snapshot.queryParams['image'];
   }
 
-  ngOnDestroy() {
-    this.routeSub.unsubscribe();
+  discardImage() {
+    this.location.back();
   }
 }
