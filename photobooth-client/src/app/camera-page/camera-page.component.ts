@@ -1,3 +1,5 @@
+import { MatButtonModule } from '@angular/material/button';
+// import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,6 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './camera-page.component.html',
   styleUrls: ['./camera-page.component.scss']
 })
+
+
 export class CameraPageComponent implements OnInit {
   // Dimensions of images uploaded to server
   static IMG_WIDTH = 640;
@@ -26,7 +30,6 @@ export class CameraPageComponent implements OnInit {
 
     this.context = this.captureCanvas.getContext('2d');
   }
-
 
   ngOnInit() {
     this.startWebcam();
@@ -82,4 +85,5 @@ export class CameraPageComponent implements OnInit {
       this.router.navigate(['confirm-shot'], { queryParams: { image: img.src } });
     });
   }
+
 }
