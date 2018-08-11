@@ -63,51 +63,38 @@ app.post('/uploadphoto', function(req, res){
 
         // Regular expression for image type:
         // This regular image extracts the "jpeg" from "image/jpeg"
-        var imageTypeRegularExpression      = /\/(.*?)$/;      
+        var imageRegEx = /\/(.*?)$/;      
 
         // Generate random string
-        var crypto                          = require('crypto');
-        var seed                            = crypto.randomBytes(20);
-        var uniqueSHA1String                = crypto
-                                               .createHash('sha1')
-                                                .update(seed)
-                                                 .digest('hex');
+        var crypto = require('crypto');
+        var seed = crypto.randomBytes(20);
+        var uniqueString = crypto.createHash('sha1').update(seed).digest('hex');
 
         var base64Data = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAZABkAAD/4Q3zaHR0cDovL25zLmFkb2JlLmN...';
 
-        var imageBuffer                      = decodeBase64Image(base64Data);
-        //var userUploadedFeedMessagesLocation = '../img/upload/feed/';
-        var userUploadedFeedMessagesLocation = 'public/uploads/';
+        var imageBuffer = decodeBase64Image(base64Data);
+        var uploadLocation = 'public/uploads/';
 
-        var uniqueRandomImageName            = 'image-' + uniqueSHA1String;
+        var uniqueName = 'image-' + uniqueString;
         // This variable is actually an array which has 5 values,
         // The [1] value is the real image extension
-        var imageTypeDetected                = imageBuffer
-                                                .type
-                                                 .match(imageTypeRegularExpression);
+        var imageTypeDetected = imageBuffer.type.match(imageRegEx);
 
-        var userUploadedImagePath            = userUploadedFeedMessagesLocation + 
-                                               uniqueRandomImageName +
-                                               '.' + 
-                                               imageTypeDetected[1];
+        var uniquePath = uploadLocation + uniqueName + '.' + imageTypeDetected[1];
 
         // Save decoded binary image to disk
-        try
-        {
-        require('fs').writeFile(userUploadedImagePath, imageBuffer.data,  
-                                function() 
-                                {
-                                  console.log('DEBUG - feed:message: Saved to disk image attached by user:', userUploadedImagePath);
-                                });
-        }
-        catch(error)
-        {
+        try {
+        require('fs').writeFile(
+            uniquePath, 
+            imageBuffer.data,  
+            function(){
+                console.log('DEBUG - feed:message: Saved to disk image attached by user:', uniquePath);
+            });
+        } catch(error) {
             console.log('ERROR:', error);
         }
 
-    }
-    catch(error)
-    {
+    } catch(error) {
         console.log('ERROR:', error);
     }
     
