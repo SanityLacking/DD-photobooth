@@ -1,12 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const multer = require('multer');
 const app = express();
 const imageUploader = require('./imageUploader');
 
 // Tensorflow options
-var local_filter = true;                           // Do we want TF to be done locally or on another server?
+var local_filter = false;                           // Do we want TF to be done locally or on another server?
 const python = require("./pythonTf"); 
 const TFServer = require('./TFServer');
 
@@ -27,17 +26,9 @@ var corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// Multer
-const storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, __dirname+'/uploads');
-      },
-    filename: function (req, file, callback){
-        callback(null, file.fieldname + '-' + Date.now());
-    }
-  });
 
 
+// Routes
 app.use(express.static(path.join(__dirname, '../photobooth-client/dist/photobooth-client')));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname,'../photobooth-client/dist/photobooth-client/index.html'))
