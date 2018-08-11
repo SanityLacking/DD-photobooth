@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
- 
+//const python = require("./pythonTf"); 
 const app = express();
 app.use(express.static(__dirname));
  
@@ -40,6 +40,8 @@ app.get('/', function (req, res) {
 app.post('/uploadphoto', function(req, res){
     console.log('uploadphoto');
     let image = req.body.image;
+    //image = image.src
+    console.log(image);
 
     // Save base64 image to disk
     try{
@@ -70,7 +72,7 @@ app.post('/uploadphoto', function(req, res){
 
         var base64Data = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAZABkAAD/4Q3zaHR0cDovL25zLmFkb2JlLmN...';
 
-        var imageBuffer = decodeBase64Image(base64Data);
+        var imageBuffer = decodeBase64Image(image);
         var uploadLocation = 'public/uploads/';
 
         var uniqueName = 'image-' + uniqueString;

@@ -1,5 +1,6 @@
 var PythonShell = require('python-shell');
-var pythonTF;
+//var pythonTF;
+Var pythonTf = {};
 
 	pythonTF.processImg = function(inputA,checkpointS,callback){
 		var inputArg = inputA;
