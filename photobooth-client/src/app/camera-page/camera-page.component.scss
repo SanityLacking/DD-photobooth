@@ -1,0 +1,43 @@
+
+body{
+  background-color: #000 !important;
+}
+
+#webcam-container {
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100% - 64px);
+  position: fixed;
+
+  video {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+  }
+}
+
+#capture-button {
+  position: fixed;
+  transform: scale(1.5);
+  right: 75px;
+  bottom: 75px;
+  z-index: 100;
+}
+
+.capture-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+
+  background-color: #FFF;
+
+  pointer-events: none;
+}
+
+.capture-clear {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+}

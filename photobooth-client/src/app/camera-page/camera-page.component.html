@@ -1,0 +1,13 @@
+<mat-toolbar class="booth-toolbar" color="primary">
+  <span>Camera</span>
+</mat-toolbar>
+
+<div class="capture-effect capture-clear"></div>
+
+<div id="webcam-container">
+  <video autoplay="true" id="webcam"></video>
+</div>
+
+<button mat-fab class="booth-bg" id="capture-button" (click)="takePhoto()">
+  <mat-icon aria-label="Capture image">camera_alt</mat-icon>
+</button>

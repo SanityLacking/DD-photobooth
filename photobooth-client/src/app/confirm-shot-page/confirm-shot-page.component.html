@@ -1,0 +1,17 @@
+<mat-toolbar class="booth-toolbar" color="primary">
+  <span>Confirm Photo</span>
+</mat-toolbar>
+
+<div id="photo-confirm-container">
+  <img [src]="image">
+</div>
+
+<button mat-fab class="affirmative-bg" id="confirm-button"
+        (click)="confirmShot()">
+  <mat-icon aria-label="Continue with image">check</mat-icon>
+</button>
+
+<button mat-fab class="negative-bg" id="discard-button"
+        (click)="discardImage()">
+  <mat-icon aria-label="Discard image">close</mat-icon>
+</button>
