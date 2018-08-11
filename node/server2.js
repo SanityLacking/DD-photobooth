@@ -32,9 +32,6 @@ app.post('/uploadphoto', function(req, res){
     res.send(true);
 });
 
-
-
-
 // HTTP listener
 app.listen(3000, function () {
     console.log('Server is running on port 3000');
