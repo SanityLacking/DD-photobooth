@@ -21,9 +21,9 @@ var corsOptions = {
 app.use(cors(corsOptions))
 
 
-app.use(express.static(__dirname + '../photobooth-client/dist'));
+app.use(express.static(__dirname + '../photobooth-client/dist/photobooth-client'));
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname,'../photobooth-client/dist/index.html'))
+    res.sendFile(path.join(__dirname,'../photobooth-client/dist/photobooth-client/index.html'))
 });
 
 app.post('/uploadphoto', function(req, res){
