@@ -5,6 +5,7 @@
 var pythonTF = require("../pythonTf.js");
 
 exports.index = function(req, res){
+  console.log('route working');
   res.render('index', { title: 'Express' });
 };
 
