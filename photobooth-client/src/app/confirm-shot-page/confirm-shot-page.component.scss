@@ -18,6 +18,14 @@
   position: fixed;
   transform: scale(1.5);
   right: 75px;
+  bottom: 200px;
+  z-index: 100;
+}
+
+#discard-button {
+  position: fixed;
+  transform: scale(1.5);
+  right: 75px;
   bottom: 75px;
   z-index: 100;
 }

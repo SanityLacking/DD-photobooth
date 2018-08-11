@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-filter-page',
@@ -15,7 +16,8 @@ export class FilterPageComponent implements OnInit {
   width: number;
   height: number;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute,
+              private location: Location) {}
 
 
   ngOnInit() {
@@ -24,4 +26,9 @@ export class FilterPageComponent implements OnInit {
     this.width = this.route.snapshot.queryParams['width'];
     this.height = this.route.snapshot.queryParams['height'];
   }
+
+  discardImage() {
+    this.location.back();
+  }
+
 }
