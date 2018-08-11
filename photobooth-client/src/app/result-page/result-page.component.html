@@ -2,4 +2,20 @@
   <span>Result</span>
 </mat-toolbar>
 
-<div id="test"><!-- test container --></div>
+<div id="results-container">
+  <mat-card>
+    <mat-card-title>Result</mat-card-title>
+    <img mat-card-image [src]="image">
+  </mat-card>
+
+  <mat-card *ngIf="resultLink !== undefined">
+    <mat-card-title>Save this image</mat-card-title>
+    <mat-card-content>
+      To download this image, please either scan the QR code, or head to the
+      link below.
+    </mat-card-content>
+
+    <qr-code [value]="resultLink" size="256"></qr-code>
+    <a [href]="resultLink">{{ resultLink }}</a>
+  </mat-card>
+</div>
