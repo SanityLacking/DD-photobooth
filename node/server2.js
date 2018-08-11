@@ -42,16 +42,14 @@ app.post('/uploadphoto', function(req, res){
     let image = req.body.image;
 
     // Save base64 image to disk
-    try
-    {
+    try{
         // Decoding base-64 image
         // Source: http://stackoverflow.com/questions/20267939/nodejs-write-base64-image-file
         function decodeBase64Image(dataString) {
           var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
           var response = {};
 
-          if (matches.length !== 3) 
-          {
+          if (matches.length !== 3){
             return new Error('Invalid input string');
           }
 
@@ -93,7 +91,6 @@ app.post('/uploadphoto', function(req, res){
         } catch(error) {
             console.log('ERROR:', error);
         }
-
     } catch(error) {
         console.log('ERROR:', error);
     }
@@ -101,7 +98,7 @@ app.post('/uploadphoto', function(req, res){
 });
 
 // HTTP listener
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
+server = app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();
     console.log("Node server listening at", addr.address + ":" + addr.port);
 });
