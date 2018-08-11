@@ -19,7 +19,13 @@ export class ConfirmShotPageComponent implements OnInit {
     this.image = this.route.snapshot.queryParams['image'];
   }
 
+
   discardImage() {
     this.location.back();
+  }
+
+
+  continueWithImage() {
+    this.router.navigate(['filter'], { queryParams: { image: this.image } });
   }
 }

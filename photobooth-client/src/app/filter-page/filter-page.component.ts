@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-filter-page',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-page.component.scss']
 })
 export class FilterPageComponent implements OnInit {
-  ngOnInit() {
+  // b64 encoded png
+  image: string;
 
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+
+  ngOnInit() {
+    this.image = this.route.snapshot.queryParams['image'];
   }
 }
