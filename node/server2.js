@@ -6,6 +6,7 @@ const app = express();
 const imageUploader = require('./imageUploader');
 
 // Tensorflow options
+var local_filter = true;                           // Do we want TF to be done locally or on another server?
 const python = require("./pythonTf"); 
 const TFServer = require('./TFServer');
 
@@ -53,13 +54,17 @@ app.post('/uploadphoto', function(req, res){
     console.log(fileName);
 
     /*
-    So I just realised that we don't need to run the TF code here as we're supposed to be
-    sending an image to the Cloud server. I've decided to try something else out...
-    python.processImg(fileName,1,function(){
-        console.log('done');
-    });
+        If we set local_filter to true, we'll try and run our Python module. Otherwise we need to 
+        make sure that our data is sent to the cloud server.
+        Note: Python module needs TensorFlow and Python3 to be installed
     */
-   TFServer.post('/public/uploads/' + fileName);
+    if(local_filter){
+        python.processImg(fileName,1,function(){
+            console.log('done');
+        });
+    } else {
+        TFServer.post('/public/uploads/' + fileName);
+    }
 
 
 });
