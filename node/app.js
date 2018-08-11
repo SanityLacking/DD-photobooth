@@ -21,16 +21,6 @@ var storage = multer.diskStorage({
     }
 });
 
-
-var key = fs.readFileSync('private.key');
-var cert = fs.readFileSync( 'primary.crt' );
-var ca = fs.readFileSync( 'intermediate.crt' );
-var options = {
-  key: key,
-  cert: cert,
-  ca: ca
-};
-
 var createServer = require('auto-sni');
 
 var upload = multer({ storage:storage })
