@@ -20,6 +20,21 @@ var router = express();
 var server = http.createServer(router);
 var io = socketio.listen(server);
 
+// Set up CORS
+var cors = require('cors');
+var whiteList = [
+  'http://localhost:4200'
+];
+var corsOptions = {
+  origin: function(origin, callback){
+    var isWhitelisted = whiteList.indexOf(origin) !== -1;
+    callback(null, isWhitelisted);
+  },
+  credentials: true
+}
+router.use(cors(corsOptions));
+
+
 router.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
 var sockets = [];

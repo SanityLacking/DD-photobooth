@@ -16,13 +16,8 @@ export class ImageService {
 
   constructor(private http:HttpClient) { }
 
-  testFunction(test){
-    let body = JSON.stringify(test);
-    return this.http.post('http://localhost:3000/api/uploadphoto', body, httpOptions);
-  }
-
   uploadImage(image){
     let body = JSON.stringify(image);
-    return this.http.post('http://localhost:3000/api/uploadphoto', body, httpOptions);
+    return this.http.post('http://localhost:3000/api/uploadImage', body, httpOptions);
   }
 }

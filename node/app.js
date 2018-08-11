@@ -26,9 +26,9 @@ var key = fs.readFileSync('private.key');
 var cert = fs.readFileSync( 'primary.crt' );
 var ca = fs.readFileSync( 'intermediate.crt' );
 var options = {
-key: key,
-cert: cert,
-ca: ca
+  key: key,
+  cert: cert,
+  ca: ca
 };
 
 var createServer = require('auto-sni');
@@ -69,7 +69,7 @@ app.post('/uploadphoto',upload.single('image'), routes.uploadphoto);
 //app.post('/upload', routes.upload);
 app.get('/display', routes.display);
 
-app.get('/api/uploadImage', function(req, res){
+app.post('/api/uploadImage', function(req, res){
   console.log('upload image');
 });
 
