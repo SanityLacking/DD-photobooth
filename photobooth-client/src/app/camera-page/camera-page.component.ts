@@ -59,6 +59,13 @@ export class CameraPageComponent implements OnInit {
     this.context.drawImage(video, 0, 0, 640, 480);
     image.src = this.captureCanvas.toDataURL('image/png');
 
+    // Save to session
+    try{  
+      sessionStorage.setItem('imageStorage', image.src);
+      console.log('Storage successful');
+    } catch(e) {
+      console.log('Storage failed: ' + e);
+    }
     return image;
   }
 
@@ -78,12 +85,11 @@ export class CameraPageComponent implements OnInit {
     }, 10);
   }
 
-
   takePhoto(): void {
     this.shotEffect(() => {
       const img: HTMLImageElement = this.captureWebcam();
-      this.router.navigate(['confirm-shot'], { queryParams: { image: img.src } });
+
+      this.router.navigate(['confirm-shot']);
     });
   }
-
 }

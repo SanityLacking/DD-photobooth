@@ -16,10 +16,17 @@ export class ConfirmShotPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.image = this.route.snapshot.queryParams['image'];
+    
+    if(typeof(Storage) !== 'undefined'){
+      let imgData = sessionStorage.getItem('imageStorage');
+      this.image = imgData;
+    }
   }
 
   discardImage() {
     this.location.back();
+
+    // Clear session storage
+    sessionStorage.clear();
   }
 }
