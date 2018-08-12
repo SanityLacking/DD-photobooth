@@ -44,7 +44,7 @@ pythonTf.processImg = function(inputA,checkpointS,callback){
 				]
 	};
 	PythonShell.run('evaluate.py', options, function (err, results) {
-	if (err) throw err;
+	//if (err) throw err;
 		console.log('results: %j', results);
 		callback(outputArg);
 	});
