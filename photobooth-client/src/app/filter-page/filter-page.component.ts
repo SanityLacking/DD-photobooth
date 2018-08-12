@@ -22,7 +22,10 @@ export class FilterPageComponent implements OnInit {
   // Filter id
   filter: number;
 
-  constructor(private router: Router, 
+  filterImages: string[] = ['la_muse.jpg', 'rain_princess.jpg', 'udnie.jpg',
+                            'wave.jpg'];
+
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private location: Location,
               private _imageService: ImageService) {}
@@ -46,8 +49,8 @@ export class FilterPageComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  
-  uploadImage(image, filter){
+
+  uploadImage(image, filter) {
     this._imageService.uploadImage(image, filter).subscribe(
       data => {
         //this.router.navigate(['filter']);
@@ -59,7 +62,14 @@ export class FilterPageComponent implements OnInit {
 
     );
   }
-  onFilterCardClick(filter){
+
+
+  onFilterCardClick(filter) {
     console.log(filter);
+
+    document.getElementById('filter-card-' + this.filter).style.opacity = '0.5';
+    document.getElementById('filter-card-' + filter).style.opacity = '1';
+
+    this.filter = filter;
   }
 }

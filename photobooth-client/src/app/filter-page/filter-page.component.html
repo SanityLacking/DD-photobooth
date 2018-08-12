@@ -8,19 +8,12 @@
 
 
 <div id="filter-list">
-  <div>
-    <mat-card class="filter-card" (click)="onFilterCardClick(0)"><img mat-card-image class="filter-img" src="./assets/images/la_muse.JPG"></mat-card>
+  <div *ngFor="let img of filterImages; let i = index">
+    <mat-card class="filter-card" id="filter-card-{{ i }}"
+              (click)="onFilterCardClick(i)">
+      <img mat-card-image class="filter-img" src="./assets/images/{{ img }}">
+    </mat-card>
   </div>
-  <div>
-    <mat-card class="filter-card" (click)="onFilterCardClick(1)"><img mat-card-image class="filter-img" src="./assets/images/rain_princess.jpg"></mat-card>
-  </div>
-  <div>
-    <mat-card class="filter-card" (click)="onFilterCardClick(2)"><img mat-card-image class="filter-img" src="./assets/images/udnie.jpg"></mat-card>
-  </div>
-  <div>
-    <mat-card class="filter-card" (click)="onFilterCardClick(3)"><img mat-card-image class="filter-img" src="./assets/images/wave.jpg"></mat-card>
-  </div>
-
 </div>
 
 <button mat-fab class="affirmative-bg" id="confirm-button"
