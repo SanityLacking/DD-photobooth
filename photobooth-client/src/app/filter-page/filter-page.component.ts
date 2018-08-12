@@ -20,7 +20,7 @@ export class FilterPageComponent implements OnInit {
   height: number;
 
   // Filter id
-  filter: number;
+  filter: number = 0;
 
   filterImages: string[] = ['la_muse.jpg', 'rain_princess.jpg', 'udnie.jpg',
                             'wave.jpg'];
