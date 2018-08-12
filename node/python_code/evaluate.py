@@ -1,7 +1,7 @@
 from __future__ import print_function
 import sys
 sys.path.insert(0, 'src')
-from src.transform import transform as transform
+import src.transform as transform
 import numpy as np, vgg, pdb, os
 import scipy.misc
 import tensorflow as tf
