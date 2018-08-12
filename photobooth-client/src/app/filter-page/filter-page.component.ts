@@ -51,6 +51,7 @@ export class FilterPageComponent implements OnInit {
 
 
   uploadImage(image, filter) {
+    console.log('uploadImage(' + filter + ')');
     this._imageService.uploadImage(image, filter).subscribe(
       data => {
         //this.router.navigate(['filter']);

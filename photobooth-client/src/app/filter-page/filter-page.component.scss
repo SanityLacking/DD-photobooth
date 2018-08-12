@@ -28,6 +28,7 @@
 
 .filter-card {
   opacity: 0.5;
+  transition: opacity 0.2s linear;
   background-color: transparent;
   margin-top: 5%;
   margin-left: 5%;
