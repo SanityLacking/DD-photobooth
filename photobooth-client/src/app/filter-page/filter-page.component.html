@@ -9,7 +9,8 @@
 
 <div id="filter-list">
   <div *ngFor="let img of filterImages; let i = index">
-    <mat-card class="filter-card" (click)="onFilterCardClick(i)">
+    <mat-card class="filter-card" id="filter-card-{{ i }}"
+              (click)="onFilterCardClick(i)">
       <img mat-card-image class="filter-img" src="./assets/images/{{ img }}">
     </mat-card>
   </div>
