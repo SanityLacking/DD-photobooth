@@ -19,7 +19,8 @@
 //as a reference while setting up the page
 #filter-list {
   position: fixed;
-  width: calc(15% - 10px);
+  //width: calc(15% - 10px);
+  width: 150px;
   height: calc(100% - 64px);
   background-color: transparent;
 

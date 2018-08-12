@@ -5,7 +5,7 @@ const app = express();
 const imageUploader = require('./imageUploader');
 
 // Tensorflow options
-var local_filter = false;                           // Do we want TF to be done locally or on another server?
+var local_filter = true;                           // Do we want TF to be done locally or on another server?
 const python = require("./pythonTf"); 
 const TFServer = require('./TFServer');
 
@@ -28,24 +28,6 @@ app.use(cors(corsOptions))
 
 // App Data
 var photos = [];
-var filter_options = [
-    {
-        name: 'la muse',
-        src: 'la_muse.JPG',
-    }, {
-        name: 'rain princess',
-        src: 'rain_princess.jpg',
-    },{
-        name: 'udnie',
-        src: 'udnie.jpg',
-    }, {
-        name: 'wave',
-        src: 'wave.jpg',
-    }, {
-        name: 'wreck',
-        src: null,
-    }, 
-];
 
 // Routes
 app.use(express.static(path.join(__dirname, '../photobooth-client/dist/photobooth-client')));

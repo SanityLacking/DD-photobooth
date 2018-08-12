@@ -9,7 +9,7 @@
 
 
 var TFServer = {};
-var host = 'localhost';
+var host = '10.152.0.2';
 var port = 3000;
 
 TFServer.post = function(file_address){
