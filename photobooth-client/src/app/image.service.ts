@@ -22,6 +22,6 @@ export class ImageService {
       'filter': filter
     }
     let body = JSON.stringify(data);
-    return this.http.post('http://localhost:3000/api/uploadphoto', body, httpOptions);
+    return this.http.post('/api/uploadphoto', body, httpOptions);
   }
 }
