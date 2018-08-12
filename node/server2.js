@@ -38,12 +38,15 @@ app.get('/', function (req, res) {
 app.post('/api/uploadphoto', function(req, res){
     //console.log('uploadphoto');
     let image = req.body.image;
+    let filter = req.body.filter;
     let photo_obj = {
         original: null,
         filter: null
     };
     //image = image.src
     //console.log(image);
+
+    console.log('using filter #: ' + filter);
 
     // Save base64 image to disk
     let fileName = imageUploader.upload(image);
@@ -55,8 +58,9 @@ app.post('/api/uploadphoto', function(req, res){
         Note: Python module needs TensorFlow and Python3 to be installed
     */
     if(local_filter){
-        python.processImg(fileName,1,function(){
-            console.log('done');
+        python.processImg(fileName,filter,function(cb){
+            console.log('callback: ' + cb);
+            res.send({path: cb});
         });
     } else {
         TFServer.post('/public/uploads/' + fileName);

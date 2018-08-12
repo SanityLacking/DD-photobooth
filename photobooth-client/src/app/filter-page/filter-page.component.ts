@@ -40,7 +40,6 @@ export class FilterPageComponent implements OnInit {
   // Navigate to result page
   confirmFilter() {
     this.uploadImage(this.image, this.filter);
-    this.router.navigate(['result']);
   }
 
   // Begin process again by redirecting to camera page
@@ -54,11 +53,14 @@ export class FilterPageComponent implements OnInit {
     console.log('uploadImage(' + filter + ')');
     this._imageService.uploadImage(image, filter).subscribe(
       data => {
-        //this.router.navigate(['filter']);
+        console.log(data['path']);
+        sessionStorage.setItem('image', String(data['path']));
+        this.router.navigate(['result']);
         return true;
       },
       error => {
         console.error('Error uploading image');
+        console.log(error);
       }
 
     );

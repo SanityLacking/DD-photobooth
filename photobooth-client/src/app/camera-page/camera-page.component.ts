@@ -75,18 +75,20 @@ export class CameraPageComponent implements OnInit {
 
 
   private shotEffect(callback: () => void): void {
-    const captureFX: HTMLElement = document.querySelector('.capture-effect');
-    captureFX.classList.remove('capture-clear');
-    // Alter the display mode (the value of this makes no difference) in order
-    // to force a redraw, allowing the opacity transition to work.
-    captureFX.style.display = 'inline';
+    setTimeout(() => {
+      const captureFX: HTMLElement = document.querySelector('.capture-effect');
+      captureFX.classList.remove('capture-clear');
+      // Alter the display mode (the value of this makes no difference) in order
+      // to force a redraw, allowing the opacity transition to work.
+      captureFX.style.display = 'inline';
 
-    setTimeout(function() {
-      captureFX.classList.add('capture-clear');
-      captureFX.style.display = 'block';
+      setTimeout(function() {
+        captureFX.classList.add('capture-clear');
+        captureFX.style.display = 'block';
 
-      setTimeout(callback, 1000);
-    }, 10);
+        setTimeout(callback, 1000);
+      }, 10);
+    }, 5000);
   }
 
   takePhoto(): void {

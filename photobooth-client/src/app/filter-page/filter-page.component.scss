@@ -38,6 +38,12 @@
   //padding: 5%;
   padding-right: 0px;
   padding-bottom: 0px;
+  box-shadow: none !important;
+}
+
+// First filter card is selected by default
+#filter-card-0 {
+  opacity: 1;
 }
 
 .filter-img {

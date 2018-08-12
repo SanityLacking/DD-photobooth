@@ -8,24 +8,31 @@ pythonTf.processImg = function(inputA,checkpointS,callback){
 	// Not sure if we need to make a new name -- the original files will all be unique
 	//var outputArg = inputArg.substring(0,inputArg.lastIndexOf("."))+"_"+Math.floor(new Date() / 1000)+imgtype;
 	var outputArg = inputA.substring(0, inputArg.lastIndexOf('.'))+"_filter" + imgType;
-	var checkpointStr = checkpointS;
+  var checkpointStrs = ['la muse', 'rain princess', 'udnie', 'wave'];
+  var checkpointStr = checkpointStrs[Number(checkpointS)];
 	var checkpoint="";
 
 	switch(checkpointStr){
 		case "wave":
-		checkpoint = "wave.ckpt";
+		  checkpoint = "wave.ckpt";
+      break;
 		case "la muse":
-		checkpoint = "la_muse.ckpt";
+		  checkpoint = "la_muse.ckpt";
+      break;
 		case "rain princess":
-		checkpoint = "rain_princess.ckpt";
+		  checkpoint = "rain_princess.ckpt";
+      break;
 		case "scream":
-		checkpoint = "scream.ckpt";
+		  checkpoint = "scream.ckpt";
+      break;
 		case "udnie":
-		checkpoint = "udnie.ckpt";
+		  checkpoint = "udnie.ckpt";
+      break;
 		case "wreck":
-		checkpoint = "wreck.ckpt";
+		  checkpoint = "wreck.ckpt";
+      break;
 		default:
-		checkpoint = "wave.ckpt"; //for now this will be the default.
+		  checkpoint = "wave.ckpt"; //for now this will be the default.
 	}
 	var scriptPath = './python_code/';
 	var checkpointPath ="checkpoints/";

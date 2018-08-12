@@ -31,17 +31,17 @@ export class ResultPageComponent implements OnInit {
     // uploaded it....
     this.resultLink = undefined;
 
-    this.prepareCanvas();
-    this.addWatermark();
-
-    this.image = this.ppCanvas.toDataURL('image/png');
+    this.prepareCanvas(() => {
+      this.addWatermark();
+      this.image = this.ppCanvas.toDataURL('image/png');
+    });
   }
 
 
   /*
    * Loads the captured image into `this.ppCanvas`, ready to be manipulated
    */
-  private prepareCanvas(): void {
+  private prepareCanvas(callback: () => void): void {
     // Image dimensions
     this.width = Number(sessionStorage.getItem('width'));
     this.height = Number(sessionStorage.getItem('height'));
@@ -55,8 +55,15 @@ export class ResultPageComponent implements OnInit {
 
     // Draw image to canvas
     const image: HTMLImageElement = new Image;
-    image.src = sessionStorage.getItem('imageStorage');
-    this.context.drawImage(image, 0, 0, this.width, this.height);
+    image.src = './assets/images/images/' + sessionStorage.getItem('image');
+    console.log('image path: ' + image.src);
+
+    image.onload = () => {
+      this.context.drawImage(image, 0, 0, this.width, this.height);
+      callback();
+
+      this.resultLink = image.src;
+    }
   }
 
 
